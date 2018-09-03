@@ -24,3 +24,7 @@ A <a href="https://hackmemphis.com" target="_blank">HACKmemphis</a> 2018 project
 * PHP 7.2.x or higher
 * Vagrant 2.1.0 or higher
 * Virtualbox 5.2.x or higher (or another supported provider)
+
+# Rough Workflow
+
+![Rough Workflow](https://github.com/iGotHomeSafely/iGotHomeSafely.com/blob/master/iGotHomeSafely.com.png)
