@@ -6,7 +6,13 @@ matrix:
   allow_failures:
   - php: nightly
 before_script:
-  - cp .env.example .env
-  - composer install
-  - php artisan key:generate
+- cp .env.example .env
+- composer install
+- php artisan key:generate
 script: vendor/bin/phpunit
+notifications:
+  webhooks:
+    urls:
+      secure: Nnh7QL4/oou9w/x6fc+W2DObi7nkpCFQPXZI4EQWAcywVwDK7/j/tWr3SVxvUERA8eun/Xw1Mz2G/Pb0AueP7Njkmv1mL4Lnkj5sVXc1N7j4zzlkIRSXQxcna/q8+Tf0myj8Bv1eHImDHCRq+NKaqMTmbU7xYJoOh8YyWm8lIa5nqi5bA9sX65GkdHOlOJmXAbXLUXjHt5jczBMzNNnlMC1Yzfsne9INcpjDy3mZjmh5REFca187jRnHy6EM9H3HYt/4PrQYcaYON+45BSOMVZNObNrNWbw+fVkTjrjS3rQJVh40Rgf+bPLt/k1qg86L998rKVapiRzVanLFJ2LdXXr1wFT1owmHcRNIMc0bnThuSKchfmIHmGNorS2Vsw+/CWjg65/Vbi8xSr0ww7b8KP7aOrikIfJpxchp7lhA6Eh6GK0yGLLCb9F4ZPmbsbOhGoHXnsp+p+bRZKqKuZkb2Drmi0jxeowqjhp6CDIGfyIYeLFbLPrtGitKFFpuJdyFSO6Ju3kn74+Lt6xjVHZo8AEd4xEQuZ/s4tdu79aTkzmZHyP/fd7ayvO7N4PXhpGmwq4GMP9AduApVQkeV12Qa67SRHu5+0qPn3AYE37tTBVPhU33foCALhXj5eVo5nIeqVXWkDixmZEYCmmv94l59gVpbgAswSabfvSK5b48uHo=
+    on_success: always
+    on_failure: never
