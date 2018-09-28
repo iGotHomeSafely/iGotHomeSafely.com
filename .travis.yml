@@ -6,6 +6,7 @@ matrix:
   allow_failures:
   - php: nightly
 before_script:
+  - cp .env.example .env
   - composer install
   - php artisan key:generate
 script: vendor/bin/phpunit
