@@ -13,7 +13,12 @@ class UserCanApprovePendingFriendRequest extends TestCase
     public function testUserCanApprovePendingFriendRequest()
     {
         $user = factory(User::class)->create();
+        $user->email_verified_at = '2018-09-29 02:36:12';
+        $user->save();
+
         $friend = factory(User::class)->create();
+        $friend->email_verified_at = '2018-09-29 02:36:12';
+        $friend->save();
 
         $this->actingAs($user)
              ->visit('/search')

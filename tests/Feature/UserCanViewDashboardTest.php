@@ -13,6 +13,8 @@ class UserCanViewDashboardTest extends TestCase
     public function testUserCanViewDashboard()
     {
         $user = factory(User::class)->create();
+        $user->email_verified_at = '2018-09-29 02:36:12';
+        $user->save();
 
         $this->actingAs($user)
              ->visit('/home')

@@ -28,3 +28,7 @@ Route::post('/friends/request', 'FriendController@addUnverifiedFriend')->name('f
 
 Route::get('/search', 'SearchController@index')->name('search.index')->middleware('verified');
 Route::post('/search', 'FriendController@doSearch')->name('search.doSearch')->middleware('verified');
+
+Route::group(['middleware' => ['web, verified']], function () {
+    // your routes here
+});
