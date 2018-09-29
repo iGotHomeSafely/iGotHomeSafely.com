@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-xl-12">
-            <form action="{{ route('friends.addFriendUnverified') }}" method="post">
+            <form action="{{ route('friends.addUnverifiedFriend') }}" method="post">
                 @csrf
                 <label>{{ $match->name }}</label>
 
@@ -12,7 +12,7 @@
                 <br>
                 <br>
                 <br>
-                <button type="submit" class="btn btn-primary ">Add {{ $match->name }}</button>
+                <button type="submit" class="btn btn btn-success ">Add {{ $match->name }}</button>
             </form>
         </div>
     </div>

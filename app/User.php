@@ -33,7 +33,19 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function friends()
     {
-
         return $this->belongsToMany('App\User', 'friend_user', 'user_id', 'friend_id')->where('validated', 1);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function receivedInvites()
+    {
+        return $this->belongsToMany('App\User', 'friend_user', 'friend_id', 'user_id')->where('validated', 0);
+    }
+
+    public function notifications()
+    {
+        $this->hasMany('App\Notifications');
     }
 }
