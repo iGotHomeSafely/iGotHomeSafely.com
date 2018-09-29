@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                         @else
-                            Get a life loser. Have you tried smiling more?
+                            You're all caught up! No pending friend requests.
                         @endif
                     </div>
                 </div>
