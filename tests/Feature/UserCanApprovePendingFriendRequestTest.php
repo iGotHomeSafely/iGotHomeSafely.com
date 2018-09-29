@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class UserCanApprovePendingFriendRequest extends TestCase
 {
-//    use DatabaseTransactions;
+    use DatabaseTransactions;
 
     public function testUserCanApprovePendingFriendRequest()
     {

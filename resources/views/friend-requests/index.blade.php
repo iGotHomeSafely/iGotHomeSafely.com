@@ -25,7 +25,7 @@
                                                 <td>{{ $pending_friend->name }}</td>
                                                 <td>{{ $pending_friend->email }}</td>
                                                 <td>
-                                                    <form id="approve-friend" action="{{ route('friends.addUnverifiedFriend') }}" method="POST">
+                                                    <form id="approve-friend" action="{{ route('friends.approveFriendRequest') }}" method="POST">
                                                         @csrf
                                                         <input type="hidden" id="user_id" name="user_id" value="{{ $pending_friend->id }}">
                                                         <button type="submit" class="btn btn btn-success ">Approve</button>
