@@ -30,6 +30,8 @@ class FriendController extends Controller
         $user_id = Auth::id();
         $friend = User::where('email', $request->email)->first();
 
+        $request->session()->flash('status', 'Friend Request Sent');
+
         try
         {
             DB::table('friend_user')->insert([
@@ -39,8 +41,9 @@ class FriendController extends Controller
         }
         catch (QueryException $exception)
         {
-            dd($exception->getMessage());
+
         }
 
+        return redirect('home');
     }
 }
