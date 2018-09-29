@@ -20,3 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/checkins/{user_id}', 'CheckinController@getCheckinsForUser')->name('checkins.for.user');
 Route::post('/checkin', 'CheckinController@processCheckin')->name('process.checkin.from.user');
+
+Route::get('/friends', 'FriendController@index')->name('friends.index');
+Route::post('/friends/request', 'FriendController@addUnverifiedFriend')->name('friends.addFriendUnverified');
+Route::get('/search', 'SearchController@index')->name('search.index');
+Route::post('/search', 'FriendController@doSearch')->name('search.doSearch');

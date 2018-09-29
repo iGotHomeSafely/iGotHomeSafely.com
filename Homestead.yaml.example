@@ -13,7 +13,6 @@ sites:
     -
         map: ighs.test
         to: /home/vagrant/ighs/public
-        php: "7.3"
 databases:
     - homestead
 name: ighs
