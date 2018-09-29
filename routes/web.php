@@ -24,11 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'
 
 Route::get('/friends', 'FriendController@index')->name('friends.index')->middleware('verified');
 Route::get('/friends/request', 'FriendController@viewFriendRequests')->name('new.friend.request.view')->middleware('verified');
-Route::post('/friends/request', 'FriendController@addUnverifiedFriend')->name('friends.addUnverifiedFriend')->middleware('verified');
+Route::post('/friends/request', 'FriendController@approveFriendRequest')->name('friends.addUnverifiedFriend')->middleware('verified');
 
 Route::get('/search', 'SearchController@index')->name('search.index')->middleware('verified');
 Route::post('/search', 'FriendController@doSearch')->name('search.doSearch')->middleware('verified');
-
-Route::group(['middleware' => ['web, verified']], function () {
-    // your routes here
-});
