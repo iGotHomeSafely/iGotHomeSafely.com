@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class UserCanApprovePendingFriendRequest extends TestCase
 {
-    use DatabaseTransactions;
+//    use DatabaseTransactions;
 
     public function testUserCanApprovePendingFriendRequest()
     {
@@ -21,12 +21,16 @@ class UserCanApprovePendingFriendRequest extends TestCase
         $friend->save();
 
         $this->actingAs($user)
-             ->visit('/search')
-             ->type($friend->email, 'email')
-             ->press('search')
-             ->see($friend->email)
-             ->press('Add '.$friend->name)
-             ->seePageIs('/home');
+            ->visit('/search')
+            ->type($friend->email, 'email')
+            ->press('search')
+            ->see($friend->email)
+            ->press('Add '.$friend->name)
+            ->seePageIs('/home')
+            ->seeInDatabase('friend_user', [
+                'user_id' => $user->id,
+                'friend_id' => $friend->id,
+            ]);
 
         $this->actingAs($friend)
             ->visit('/friends/request')
