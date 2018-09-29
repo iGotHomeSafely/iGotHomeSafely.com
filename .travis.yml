@@ -1,4 +1,6 @@
 language: php
+services:
+- mysql
 php:
 - '7.2'
 - nightly
@@ -6,7 +8,8 @@ matrix:
   allow_failures:
   - php: nightly
 before_script:
-- cp .env.example .env
+- mysql -e 'CREATE DATABASE homesteaad;'
+- cp .env.test .env
 - composer install
 - php artisan key:generate
 script: vendor/bin/phpunit
