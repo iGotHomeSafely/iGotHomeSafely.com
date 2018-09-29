@@ -7,8 +7,9 @@ php:
 matrix:
   allow_failures:
   - php: nightly
+before_install:
+- mysql -e 'CREATE DATABASE homestead;'
 before_script:
-- mysql -e 'CREATE DATABASE homesteaad;'
 - cp .env.test .env
 - composer install
 - php artisan key:generate
