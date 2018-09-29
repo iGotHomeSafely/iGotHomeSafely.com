@@ -11,7 +11,8 @@
                 <br>
                 <br>
                 <br>
-                <button type="submit" class="btn btn-primary ">Search</button>
+                {{--<button type="submit" class="btn btn-primary " name="search" id="search">Search</button>--}}
+                <input type="submit" value="Search" id="search" class="btn btn-primary ">
             </form>
         </div>
     </div>
