@@ -18,3 +18,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/checkins/{user_id}', 'CheckinController@getCheckinsForUser')->name('checkins.for.user');
+Route::post('/checkin', 'CheckinController@processCheckin')->name('process.checkin.from.user');
