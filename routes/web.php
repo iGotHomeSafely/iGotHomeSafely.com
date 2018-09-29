@@ -17,14 +17,14 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::get('/checkins/{user_id}', 'CheckinController@getCheckinsForUser')->name('checkins.for.user');
-Route::post('/checkin', 'CheckinController@processCheckin')->name('process.checkin.from.user');
+Route::get('/checkins/{user_id}', 'CheckinController@getCheckinsForUser')->name('checkins.for.user')->middleware('verified');
+Route::post('/checkin', 'CheckinController@processCheckin')->name('process.checkin.from.user')->middleware('verified');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
-Route::get('/friends', 'FriendController@index')->name('friends.index');
-Route::get('/friends/request', 'FriendController@viewFriendRequests')->name('new.friend.request.view');
-Route::post('/friends/request', 'FriendController@addUnverifiedFriend')->name('friends.addUnverifiedFriend');
+Route::get('/friends', 'FriendController@index')->name('friends.index')->middleware('verified');
+Route::get('/friends/request', 'FriendController@viewFriendRequests')->name('new.friend.request.view')->middleware('verified');
+Route::post('/friends/request', 'FriendController@addUnverifiedFriend')->name('friends.addUnverifiedFriend')->middleware('verified');
 
-Route::get('/search', 'SearchController@index')->name('search.index');
-Route::post('/search', 'FriendController@doSearch')->name('search.doSearch');
+Route::get('/search', 'SearchController@index')->name('search.index')->middleware('verified');
+Route::post('/search', 'FriendController@doSearch')->name('search.doSearch')->middleware('verified');
