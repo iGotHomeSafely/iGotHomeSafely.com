@@ -48,4 +48,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $this->hasMany('App\Notifications');
     }
+
+    public function getLastCheckinAttribute()
+    {
+        return Notification::where('user_id', $this->id)->max('created_at');
+    }
 }

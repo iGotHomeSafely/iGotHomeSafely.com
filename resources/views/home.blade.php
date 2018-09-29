@@ -43,7 +43,7 @@
                                         <tr>
                                             <td>{{ $friend->name }}</td>
                                             <td>{{ $friend->email }}</td>
-                                            <td>{{ $friend->lastCheckin }}</td>
+                                            <td>{{ $friend->last_checkin }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
