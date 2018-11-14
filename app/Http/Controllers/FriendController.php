@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
-
 class FriendController extends Controller
 {
     public function index()
@@ -20,7 +19,7 @@ class FriendController extends Controller
         $user = Auth::user();
 
         return view('friends.index')->with('friends', $user->friends);
-}
+    }
 
     public function doSearch(FriendSearchRequest $request)
     {
@@ -34,18 +33,14 @@ class FriendController extends Controller
         $user = Auth::user();
         $friend = User::where('email', $request->email)->first();
 
-        try
-        {
+        try {
             DB::table('friend_user')->insert([
                 'user_id' => $user->id,
                 'friend_id' => $friend->id,
             ]);
 
             Mail::to($friend->email)->send(new NewFriendRequestMail($friend, $user));
-        }
-        catch (QueryException $exception)
-        {
-
+        } catch (QueryException $exception) {
         }
 
         $request->session()->flash('status', 'Friend Request Sent');
@@ -64,13 +59,11 @@ class FriendController extends Controller
     {
         $user = Auth::user();
 
-        $filtered_friends = $user->receivedInvites->filter(function($userFoo) use ($request)
-        {
+        $filtered_friends = $user->receivedInvites->filter(function ($userFoo) use ($request) {
             return $userFoo->id == $request->user_id;
         });
 
-        if (\count($filtered_friends) === 1)
-        {
+        if (\count($filtered_friends) === 1) {
             $friend = $filtered_friends->first();
             // approve the friendship
             DB::table('friend_user')
@@ -85,9 +78,7 @@ class FriendController extends Controller
             ]);
 
             $request->session()->flash('status', 'Friend Request Approved');
-        }
-        else
-        {
+        } else {
             $request->session()->flash('status', 'Unable to find friend request for approval.');
         }
 
