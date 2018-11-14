@@ -7,7 +7,6 @@ use App\Http\Requests\ProcessCheckinRequest;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
-
 class CheckinController extends Controller
 {
     public function processCheckin(ProcessCheckinRequest $request)
