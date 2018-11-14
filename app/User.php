@@ -33,7 +33,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function friends()
     {
-        return $this->belongsToMany('App\User', 'friend_user', 'user_id', 'friend_id')->where('validated', 1);
+        return $this->belongsToMany(\App\User::class, 'friend_user', 'user_id', 'friend_id')->where('validated', 1);
     }
 
     /**
@@ -41,7 +41,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function receivedInvites()
     {
-        return $this->belongsToMany('App\User', 'friend_user', 'friend_id', 'user_id')->where('validated', 0);
+        return $this->belongsToMany(\App\User::class, 'friend_user', 'friend_id', 'user_id')->where('validated', 0);
     }
 
     public function notifications()
